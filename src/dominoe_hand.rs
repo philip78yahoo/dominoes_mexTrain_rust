@@ -2,30 +2,20 @@ extern crate rand;
 
 use crate::dominoe::Dominoe;
 use core::cell::Cell;
-use rand::seq::SliceRandom; // 0.6.5
+use std::collections::VecDeque;
 
 #[derive(Debug)]
-pub struct DominoeDeck {
-    deck: Vec<Dominoe>,
+pub struct DominoeHand {
+    hand: VecDeque<Dominoe>,
     length: Cell<i32>, // Cell mutable at field level
 }
 
-impl DominoeDeck {
+impl DominoeHand {
   pub fn new() -> Self {
-	let mut mydeck=Vec::new();
-	for lo in 0..13 {
-	  for hi in lo..13{
-		//println!("going to push {}/{}",lo,hi);
-	    mydeck.push(Dominoe::new(lo,hi));	
-	  }// end hi
-	}// end lo
-
-    let mut rng = rand::thread_rng();
-    mydeck.shuffle(&mut rng);
-
-	DominoeDeck {
-	deck : mydeck,	
-    length: Cell::new(13*13),
+	let myhand=VecDeque::new();
+	DominoeHand {
+	hand : myhand,	
+    length: Cell::new(0),
     }
   }// end new()
 	
@@ -34,15 +24,22 @@ impl DominoeDeck {
 
   pub fn pull_dominoe(&mut self) -> Option<Dominoe> { 
 	 // TODO add case length is 0 and return None
+     // TODO access random element with index
      self.length.set(self.length.get() - 1);
 
      // vector.pop returns Option: Some<Dominoe> or None
-     return self.deck.pop(); 
+     return self.hand.pop_front(); 
   }// end pullDominoe()
 
   pub fn show(&self) -> ()  {
-    for dominoe in &self.deck {
+    for dominoe in &self.hand {
 	 dominoe.show();
     }
   }// end show
-}// end impl DominoeDeck
+
+  pub fn add(&mut self, dominoe: Dominoe) -> ()  {
+      self.hand.push_back(dominoe);
+      self.length.set(self.length.get() + 1);
+  }// end add
+
+}// end impl DominoeHand

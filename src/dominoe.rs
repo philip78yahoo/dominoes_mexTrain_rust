@@ -9,11 +9,11 @@ pub struct Dominoe {
 impl Dominoe {
   pub fn new(lo: i32, hi: i32) -> Dominoe {
     Dominoe { lo: lo, hi: hi, }
-  }
+  }// end new
 
-  pub fn show(&self) -> ()  {
+ pub fn show(&self) -> ()  {
     println!("lo {0}, hi {1}",self.lo,self.hi);
-  }
+  }// end show
 }
 
 
