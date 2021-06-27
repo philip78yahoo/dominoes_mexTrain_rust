@@ -1,11 +1,13 @@
 extern crate rand;
 
-//not yet: use rand::{thread_rng, Rng};
+use shuffle::shuffler::Shuffler;
+use shuffle::irs::Irs;
+use rand::rngs::mock::StepRng;
 
 use crate::dominoe::Dominoe;
 use core::cell::Cell;
 
-
+#[derive(Debug)]
 pub struct DominoeDeck {
     deck: Vec<Dominoe>,
     length: Cell<i32>, // Cell mutable at field level
@@ -20,6 +22,11 @@ impl DominoeDeck {
 	    mydeck.push(Dominoe::new(lo,hi));	
 	  }// end hi
 	}// end lo
+
+    let mut rng = StepRng::new(2, 13); 
+    let mut irs = Irs::default();
+    irs.shuffle(&mut mydeck, &mut rng);
+
 	DominoeDeck {
 	deck : mydeck,	
     length: Cell::new(13*13),

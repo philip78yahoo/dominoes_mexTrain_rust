@@ -1,6 +1,6 @@
 
 
-
+#[derive(Debug)]
 pub struct Dominoe {
     lo: i32,
     hi: i32,
