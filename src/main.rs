@@ -28,8 +28,10 @@ fn main() {
       },
     }
 
-    println!("my deck ( minus the 2 I already pulled and showed):");
+    println!("deck ( minus the 2 I already poped and showed):");
     deck.show();
+
+    println!("debug of deck: {:?}", deck);
 
     // cant do this...let dominoe1 = dominoelist1.pop();
 
