@@ -31,12 +31,7 @@ fn main() {
     println!("deck ( minus the 2 I already poped and showed):");
     deck.show();
 
-    println!("debug of deck: {:?}", deck);
-
-    // cant do this...let dominoe1 = dominoelist1.pop();
-
-    // cant do this...print!("dominoe1: ");dominoe1.show();
-    // cant do this...print!("dominoe2: ");dominoe2.show();
+    // println!("debug of deck: {:?}", deck);
 
     
 

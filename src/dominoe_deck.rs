@@ -1,11 +1,8 @@
 extern crate rand;
 
-use shuffle::shuffler::Shuffler;
-use shuffle::irs::Irs;
-use rand::rngs::mock::StepRng;
-
 use crate::dominoe::Dominoe;
 use core::cell::Cell;
+use rand::seq::SliceRandom; // 0.6.5
 
 #[derive(Debug)]
 pub struct DominoeDeck {
@@ -23,9 +20,8 @@ impl DominoeDeck {
 	  }// end hi
 	}// end lo
 
-    let mut rng = StepRng::new(2, 13); 
-    let mut irs = Irs::default();
-    irs.shuffle(&mut mydeck, &mut rng);
+    let mut rng = rand::thread_rng();
+    mydeck.shuffle(&mut rng);
 
 	DominoeDeck {
 	deck : mydeck,	
