@@ -40,8 +40,19 @@
 ### A player
 1. Has a train
 2. Has a hand
-5. move()
-6. get_train()
+3. get_train()
+4. move(game)
+	1. print out current player number
+	2. print out current hand
+	3. print all tokens of all player hands
+	4. print all tails of hands with tokens up
+	5. print lengths of all hands and deck
+	6. print move menu (return false means move not done)
+		1. move dominoe within hand, to/from
+		2. toggle orientation tile # in current hand
+		3. mv to train #'s tail # from current hand
+		4-a. pull from bone pile
+		4-b. mv to train #'s tail # from current hand or current train token_up 
 
 ### A game
 1. Has a bonepile
