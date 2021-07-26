@@ -6,38 +6,48 @@
 1. Has Hi and a Lo (type u32)
 2. Has a Head and a Tail 
 3. Has an orientation (bool, if true head is hi else head is lo, tail follows)
-4. ToggleOrientation()
+4. toggle_orientation()
+5. get_head() returns hi if orientation true
+6. get_tail() returns lo if orientation true 
 
-### A Bonepile
+### A Dominoe Deck (bonepile)
 1. Starts with 91 tiles in Random order (stays that order for the game)
-2. isEmpty() returns bool
-3. pullFrom() returns a Dominoe or None if empty
+2. is_empty() returns bool
+3. pull_from() returns a Dominoe or None if empty
 
 
 ### A hand
-1. addDominoe(Dominoe)()
-2. isEmpty() returns bool
+1. add_dominoe(Dominoe)()
+2. is_empty() returns bool
 3. move(from,to) from/to are u32, moves Dominoe from position 'from' to position 'to' within the hand.
-4. toggleOrientation(position) toggle the orientation of Dominoe in hand at position
+4. toggle_orientation(position) toggle the orientation of Dominoe in hand at position
 5. show() displays the Dominoes in position order head to tail
 
 ### A train
-1. Has a game-double.
+1. Has a game_double.
 2. Has a tail
 3. Has a token (bool, if true token is up, else down, init's down)
-2. SetGameDouble() 
-3. addDominoe(Dominoe) returns bool if successful
+2. set_game_double() 
+3. add(Dominoe) returns bool if successful
 	* First Dominoe head must match game-double
 	* Subsequent add's: the head of dominoe-to-be-added must match train tail
 	* Train tail becomes tail of successfully added Dominoe
-4. tokenup(),tokendown()
-5. show() displays the Dominoes in position order head to tail 
+4. token_up(),token_down()
+5. is_token_up()
+6. show() displays the Dominoes in position order head to tail
+
+
+### A player
+1. Has a train
+2. Has a hand
+5. move()
+6. get_train()
 
 ### A game
 1. Has a bonepile
-2. Has 4 trains (0..3)
-3. Has 4 hands (0..3)
-4. Has a spare-train
+2. Has 4 regular players
+3. Has 1 spare player (spare train)
+4. spare player's train's token is always up
 5. run turns until end
 
 ### Idea of the game

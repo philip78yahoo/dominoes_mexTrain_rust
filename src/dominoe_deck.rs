@@ -44,5 +44,10 @@ impl DominoeDeck {
     for dominoe in &self.deck {
 	 dominoe.show();
     }
-  }// end show
+  }// end show()
+
+  pub fn is_empty(&self) -> bool  {
+     self.deck.is_empty()
+  }// end is_empty()
+
 }// end impl DominoeDeck

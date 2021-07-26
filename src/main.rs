@@ -3,6 +3,8 @@ mod dominoe;
 mod dominoe_deck;
 mod dominoe_hand;
 mod dominoe_game;
+mod dominoe_train;
+mod dominoe_player;
 
 fn main() {
     println!("Hello, mexican train!");
