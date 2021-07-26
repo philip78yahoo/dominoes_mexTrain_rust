@@ -66,6 +66,15 @@
 		5. pass tokenup
 		6. successful add to trains of unmatched double will tokenup ( a freeze )
 		
+### To Do list
+1. DominoeDeck needs pull_game_double()
+	1. should return 1st instance of hi/lo equal from random deck
+	2. should decrement deck size by 1
+2. DominoeGame new() needs to
+   1. pull_game_double()
+   2. player.set_game_double()
+3. DominoePlayer set_game_double() needs to
+   1. self.train.set_game_double() 
 
 
 
