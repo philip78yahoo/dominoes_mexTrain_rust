@@ -1,4 +1,5 @@
 # dominoes_mexTrain_rust
+(not compiling as of 7/26/2021)
 
 ## Components (described in dominoe and computer vernacular)
 
