@@ -1,5 +1,4 @@
 # dominoes_mexTrain_rust
-(not compiling as of 7/26/2021)
 
 ## Components (described in dominoe and computer vernacular)
 
@@ -20,7 +19,7 @@
 ### A hand
 1. add_dominoe(Dominoe)()
 2. is_empty() returns bool
-3. move(from,to) from/to are u32, moves Dominoe from position 'from' to position 'to' within the hand.
+3. shift(from,to) from/to are u32, moves Dominoe from position 'from' to position 'to' within the hand.
 4. toggle_orientation(position) toggle the orientation of Dominoe in hand at position
 5. show() displays the Dominoes in position order head to tail
 
@@ -41,7 +40,7 @@
 ### A player
 1. Has a train
 2. Has a hand
-3. get_train()
+3. get_train() so other players can see token or tail
 4. move(game)
 	1. print out current player number
 	2. print out current hand
@@ -60,7 +59,7 @@
 2. Has 4 regular players
 3. Has 1 spare player (spare train)
 4. spare player's train's token is always up
-5. run turns until end
+5. run player.take_turn()'s until end
 
 ### Idea of the game
 1. Bonepile created, game-double found
@@ -87,12 +86,6 @@
    2. player.set_game_double()
 3. DominoePlayer set_game_double() needs to
    1. self.train.set_game_double() 
-
-
-
-
-
-
 
 
 
