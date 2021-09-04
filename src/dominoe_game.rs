@@ -52,7 +52,7 @@ impl DominoeGame {
 	*   5. check for player.hand_is_empty(): game over
     *   6. check for deck.is_empty() and all player.token_up()'s: game over
     */
-    for player in self.players
+    for player in self.players.iter()
     {
 	  if player.get_hand_length()==0
       {
@@ -61,7 +61,7 @@ impl DominoeGame {
     }
     if self.deck.is_empty()
     {
-	  for player in self.players
+	  for player in self.players.iter()
       {
 	    if !player.is_train_token_up()
         {
@@ -77,11 +77,11 @@ impl DominoeGame {
 	let mut play_num = 0;
 	while self.is_game_over() != true
 	{
-		for player in self.players
+		for player in self.players.iter()
 		{
 		  while player.take_turn() == false
           {
-	        println!("player {} makes a take_turn", play_num);
+	        println!("player {} take_turn", play_num);
           }
           play_num += 1;
 		}

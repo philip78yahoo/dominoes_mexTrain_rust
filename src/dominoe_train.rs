@@ -7,7 +7,6 @@ use std::collections::VecDeque;
 #[derive(Debug)]
 pub struct DominoeTrain {
     hand: VecDeque<Dominoe>,
-    dominoetail: Option<Dominoe>,
     token: bool,
     game_double: Option<i32>,
 }
@@ -17,14 +16,12 @@ impl DominoeTrain
   pub fn new() -> Self 
    {
 	let myhand=VecDeque::new();
-	let mytail=None;
 	let mytoken=false;
 	let mygame_double=None;
 
 	DominoeTrain 
 	{
 	 hand : myhand,	
-	 dominoetail : mytail,
      token : mytoken,
      game_double : mygame_double,
     }
@@ -46,12 +43,12 @@ impl DominoeTrain
 	   println!("game_double is none bad game init, returning false");
        return false;
      }
-     else if self.dominoetail.is_none() && dominoe.get_head()!= self.game_double.unwrap_or(100)
+     else if self.hand.back().is_none() && dominoe.get_head()!= self.game_double.unwrap_or(100)
      {
        println!("dominoetail is none dominoe head does not match game_double, try orientation or bad dominoe");
        return false	;   
      }
-     else if self.dominoetail.unwrap_or(Dominoe::new(100,100)).get_tail() != dominoe.get_head()
+     else if self.hand.back().unwrap_or(&Dominoe::new(100,100)).get_tail() != dominoe.get_head()
      {
 	   println!("{} days", 31);
        println!("dominoe head != to train dominoetail's tail, try re-orient dominoe or bad dominoe");
@@ -59,13 +56,12 @@ impl DominoeTrain
      }
      
      self.hand.push_back(dominoe);
-     self.dominoetail =  Some(dominoe);
      true 
   }// end add()
 
   pub fn show(&self) -> ()  {
-     for dominoe in &self.hand 
-	  {dominoe.show();} 
+     for dominoe in self.hand.iter() 
+	  {dominoe.show()} 
    }// end show()
 
   pub fn up_token(&mut self) -> () {
@@ -88,7 +84,8 @@ impl DominoeTrain
   }// end set_game_doube()
 
   pub fn get_tail(&self) -> i32 {
-	return self.dominoetail.unwrap_or(Dominoe::new(100,100)).get_tail();
+	//return self.dominoetail.as_ref().unwrap_or(&Dominoe::new(100,100)).get_tail();
+	return self.hand.back().unwrap_or(&Dominoe::new(100,100)).get_tail()
   }// end set_game_doube()
 
   

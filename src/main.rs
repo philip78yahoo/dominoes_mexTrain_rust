@@ -13,6 +13,6 @@ fn main() {
     let game = dominoe_game::DominoeGame::new();
 
     println!("debug of game: {:?}", game);
-
+    game.play();
 
 }
