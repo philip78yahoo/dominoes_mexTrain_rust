@@ -1,53 +1,69 @@
+use crate::dominoe_hand::DominoeHand;
+use crate::dominoe_train::DominoeTrain;
+use crate::dominoe::Dominoe;
+use crate::dominoe_deck::DominoeDeck;
+
 #[derive(Debug)]
 pub struct DominoePlayer {
     train: DominoeTrain,
     hand: DominoeHand,
-    id:<i32>,
+    id: i32 ,
     spare:bool,
 }
 
 impl DominoePlayer {
   pub fn new() -> Self {
-	let mut hand=DominoeHand::new();
-	let mut train=DominoeTrain::new();
-	let mut spare=false;
+	let myhand=DominoeHand::new();
+	let mytrain=DominoeTrain::new();
+	let myspare=false;
+	let myid=0;
+	
+	DominoePlayer
+	{
+	  train: mytrain,
+      hand: myhand,
+      id: myid ,
+      spare:myspare,
+	}
   }// end new()
 
-  pub fn set_spare()->(){
-	spare = true;
+  pub fn set_spare(&mut self)->(){
+	self.spare = true
   }// end set_spare
 
-  pub fn get_spare()->bool{
-	return spare;
+  pub fn get_spare(&self)->bool{
+	return self.spare
   }// end get_spare
 
-  pub fn init_hand(&self, &game:DominoeGame) -> () {
+  pub fn init_hand(&mut self, deck:&mut DominoeDeck) -> () {
 	for _cnt in 0..10 {
 		//println!("going to push {}/{}",lo,hi);
 		//the Dominoe(20,20) will stand out if problem in debug
-	    self.hand.add(game.get_deck().pull_dominoe().unwrap_or(Dominoe::new(20,20)));	
+	    self.hand.add(deck.pull_dominoe().unwrap_or(Dominoe::new(20,20)));	
 	}// end cnt
   }// end init_hand	
 
   // need game to get access to ...
-  // 1. deck if no move, need to pull
-  // 2. other players hands to add to if their token is up
-  // !!! this should not be public a player can make his own
-  //     move but not another player's move
-  // move will ask the human what to do
-  fn move(&self, &game:DominoeGame)-> bool {
-     println!("player.move() not developed yet");
+  // 1. deck if cant add domino, need to pull from deck
+  // 2. other players hands to add to if other player's token is up
+  // !!! this should not be public a player can take his own
+  //     turn but not another player's turn
+  // take_turn will ask the human what to do
+  pub fn take_turn(&self, /*&game:DominoeGame*/)-> bool {
+     println!("player.take_turn() not developed yet");
      return true; 
-  }// end move()
+  }// end take_turn()
 
-  pub fn get_train_tail(&self)-> DominoeTrain {
-     return self.train.get_tail();
-  }// end get_train()
+  pub fn get_train_tail(&self)-> i32 {
+     return self.train.get_tail()
+  }// end get_train_tail()
 
   pub fn is_train_token_up(&self)-> bool {
      return self.train.is_token_up();
   }// end is_train_token_up()
 
-  pub fn get_hand_length(&self)-> <i32> {
-     return self.hand.size();
+  pub fn get_hand_length(&self)-> i32 {
+     return self.hand.size()
   }// end get_hand_length()
+
+}// end impl DominoePlayer
