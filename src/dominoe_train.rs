@@ -80,12 +80,12 @@ impl DominoeTrain
   }// end down_token
 
   pub fn is_token_up(&self) -> bool {
-	&self.token
+	return &self.token;
     
   }// end up_token
 
   pub fn set_game_double(&mut self, the_game_double:i32) -> (){
-	self.game_double=the_game_double;
+	&self.game_double=the_game_double;
   }// end set_game_doube()
 
   pub fn get_tail(&self) -> i32 {
