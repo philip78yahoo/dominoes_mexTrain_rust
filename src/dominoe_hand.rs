@@ -1,7 +1,6 @@
 extern crate rand;
 
 use crate::dominoe::Dominoe;
-use core::cell::Cell;
 use std::collections::VecDeque;
 
 #[derive(Debug)]
@@ -18,7 +17,7 @@ impl DominoeHand {
   }// end new()
 	
 
-  pub fn size(&self) -> i32 { self.hand.len() }
+  pub fn size(&self) -> i32 { self.hand.len() as i32 }
 
   pub fn pull_dominoe(&mut self) -> Option<Dominoe> { 
 	 // TODO add case length is 0 and return None
@@ -36,7 +35,6 @@ impl DominoeHand {
 
   pub fn add(&mut self, dominoe: Dominoe) -> ()  {
       self.hand.push_back(dominoe);
-      self.length.set(self.length.get() + 1);
   }// end add
 
 }// end impl DominoeHand
