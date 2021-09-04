@@ -11,7 +11,7 @@ use crate::dominoe_hand::DominoeHand;
 *   1. init a deck
 *   2. init 4 players and player.init_hand(deck)
 *   3. init spare-player ( has an empty spare train)
-*   4. circulate through 4 player.move()'s
+*   4. circulate through 4 player.take_turn()'s
 *   5. check for player.hand_is_empty(): game over
 *   6. check for deck.is_empty() and all player.token_up()'s: game over
 *********/
@@ -83,9 +83,9 @@ impl DominoeGame {
 	{
 		for player in players
 		{
-		  while player.move() == false
+		  while player.take_turn() == false
           {
-	        println!("player {} makes a move", play_num);
+	        println!("player {} makes a take_turn", play_num);
           }
           play_num += 1;
 		}
