@@ -88,7 +88,7 @@
    1. self.train.set_game_double() 
 
 
-
+![Optional Text](../master/rust_objects_in_game.jpg)
 
 
 
