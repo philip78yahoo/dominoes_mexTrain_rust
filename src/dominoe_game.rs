@@ -2,7 +2,7 @@ extern crate rand;
 
 use crate::dominoe_player::DominoePlayer;
 use crate::dominoe_deck::DominoeDeck;
-
+use crate::dominoe::Dominoe;
 /********
 * dominoe_game has dominoe_deck and
 * several dominoe_player's
@@ -20,6 +20,7 @@ pub struct DominoeGame {
     deck: DominoeDeck,
     players: [DominoePlayer;4],
     spare_player: DominoePlayer,
+    game_double:i32,
 }
 
 impl DominoeGame {
@@ -39,11 +40,12 @@ impl DominoeGame {
 	mydeck.show();
 	println!("DominoeGame constructor after dealing mydeck.size(): {}",mydeck.size());
 	println!("DominoeGame constructor after dealing player1.get_hand_length(): {}",player1.get_hand_length());
-
+    let my_double = mydeck.pull_dominoe_double();
 	DominoeGame {
 	deck : mydeck,	
 	players : [player0,player1,player2,player3],
 	spare_player : myspare_player,
+	game_double: my_double.unwrap_or(Dominoe::new(100,100)).get_head(),
     }
   }// end new()
 
@@ -73,17 +75,23 @@ impl DominoeGame {
 	return false; // should never hit here
   }// end is_game_over
 
+  pub fn get_game_double(&self) -> i32 {
+	return self.game_double;
+  } // end get_game_double()
+
   pub fn play(&self) -> () {
 	let mut play_num = 0;
 	while self.is_game_over() != true
 	{
 		for player in self.players.iter()
 		{
-		  while player.take_turn() == false
+		  println!("player {} take_turn", play_num);	
+		  while player.take_turn(self) == false
           {
-	        println!("player {} take_turn", play_num);
+	        println!("try again, player {} take_turn", play_num);
           }
           play_num += 1;
+          play_num = play_num % 4;
 		}
 	}
   }// end play

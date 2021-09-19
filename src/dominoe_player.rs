@@ -1,7 +1,10 @@
+use crate::dominoe_game::DominoeGame;
 use crate::dominoe_hand::DominoeHand;
 use crate::dominoe_train::DominoeTrain;
 use crate::dominoe::Dominoe;
 use crate::dominoe_deck::DominoeDeck;
+use std::io;
+use std::io::*;
 
 #[derive(Debug)]
 pub struct DominoePlayer {
@@ -49,8 +52,16 @@ impl DominoePlayer {
   // !!! this should not be public a player can take his own
   //     turn but not another player's turn
   // take_turn will ask the human what to do
-  pub fn take_turn(&self, /*&game:DominoeGame*/)-> bool {
+  pub fn take_turn(&self, game:&DominoeGame)-> bool {
      println!("player.take_turn() not developed yet");
+
+     self.hand.show();
+     println!("game double {}",game.get_game_double());
+
+     let mut input = String::new();
+     io::stdin().read_line(&mut input).expect("error: unable to read user input");
+     println!("you entered {}",input);
+
      return true; 
   }// end take_turn()
 

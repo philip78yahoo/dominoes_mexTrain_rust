@@ -12,6 +12,10 @@ impl Dominoe {
     Dominoe { lo: lo, hi: hi, orientation: true,}
   }// end new
 
+ pub fn is_double(&self) -> bool {
+	return self.hi==self.lo
+  }// end is_double
+
  pub fn show(&self) -> ()  {
     println!("head {0}, tail {1}, orientation {2}",self.get_head(),self.get_tail(),self.orientation);
   }// end show

@@ -13,7 +13,8 @@
 ### A Dominoe Deck (bonepile)
 1. Starts with 91 tiles in Random order (stays that order for the game)
 2. is_empty() returns bool
-3. pull_from() returns a Dominoe or None if empty
+3. pull_dominoe() returns a Dominoe or None if empty
+4. pull_double() returns a Dominoe that is double or None if no doubles or empty
 
 
 ### A hand
@@ -41,18 +42,18 @@
 1. Has a train
 2. Has a hand
 3. get_train() so other players can see token or tail
-4. move(game)
+4. take_turn(game)
 	1. print out current player number
 	2. print out current hand
 	3. print all tokens of all player hands
 	4. print all tails of hands with tokens up
 	5. print lengths of all hands and deck
-	6. print move menu (return false means move not done)
+	6. print take_turn menu (return false means take_turn not done)
 		1. move dominoe within hand, to/from
 		2. toggle orientation tile # in current hand
-		3. mv to train #'s tail # from current hand
+		3. mv to train's tail, or player-train-with-up-token, or spare-train from current hand
 		4-a. pull from bone pile
-		4-b. mv to train #'s tail # from current hand or current train token_up 
+		4-b. mv to appropriate train or pass-and-token_up 
 
 ### A game
 1. Has a bonepile
@@ -78,17 +79,11 @@
 		6. successful add to trains of unmatched double will tokenup ( a freeze )
 		
 ### To Do list
-1. DominoeDeck needs pull_game_double()
-	1. should return 1st instance of hi/lo equal from random deck
-	2. should decrement deck size by 1
-2. DominoeGame new() needs to
-   1. pull_game_double()
-   2. player.set_game_double()
 3. DominoePlayer set_game_double() needs to
    1. self.train.set_game_double() 
 
 
-![Optional Text](../main/rust_objects_in_game.jpg)
+![Optional Text](rust_objects_in_game.jpg)
 
 
 
