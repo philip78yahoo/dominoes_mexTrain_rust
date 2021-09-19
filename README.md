@@ -45,15 +45,18 @@
 4. take_turn(game)
 	1. print out current player number
 	2. print out current hand
-	3. print all tokens of all player hands
-	4. print all tails of hands with tokens up
-	5. print lengths of all hands and deck
-	6. print take_turn menu (return false means take_turn not done)
+	3. print out game double
+        4. print current player tail ("None" if tail empty)
+	5. print all player up-tokens, print spare token ("None" if no spare train yet)
+	5. print all tails of hands with tokens up
+	6. print lengths of all hands and deck
+	7. print take_turn menu (return false means take_turn not done)
 		1. move dominoe within hand, to/from
 		2. toggle orientation tile # in current hand
-		3. mv to train's tail, or player-train-with-up-token, or spare-train from current hand
-		4-a. pull from bone pile
-		4-b. mv to appropriate train or pass-and-token_up 
+		3. can-add-train:ur own, player-train-with-up-token, spare-train if not it's not NONE
+		4. mv from current hand to can-add-train 
+		5. if cant do step 4, pull from game deck
+		6. mv from current hand to can-add-train or put up token 
 
 ### A game
 1. Has a bonepile
